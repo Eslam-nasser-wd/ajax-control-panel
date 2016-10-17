@@ -1,0 +1,50 @@
+aside#sidebar
+	position: absolute
+	left: 0
+	top: 0
+	bottom: 0
+	width: 15%
+	background: #2c3e50
+	color: #FFF
+	z-index: 2
+	box-shadow: $shadow_flat
+	.logo
+		font-size: 22px
+		text-align: center
+		padding: 16px 20px
+		border-bottom: 1px solid rgba(238, 238, 238, .2)
+	ul
+		list-style-type: none
+		padding: 0
+		margin: 0
+		margin-top: 30px
+		a
+			text-decoration: none
+			color: #FFF
+		li
+			padding: 20px 10px
+			transition: .14s
+			position: relative
+			perspective: 1100px
+			perspective-origin: right
+			&:hover
+				padding-left: 20px
+				background: #34495e
+				ul
+					transform: rotateY(0)
+			ul
+				opacity: 1
+				left: 100%
+				position: absolute
+				top: 0
+				width: 250px
+				background: #2c3e50
+				box-shadow: $shadow_flat
+				transition: .5s
+				margin-top: 0
+				transform: rotateY(90deg)
+				transform-origin: left
+				li
+					padding: 10px
+
+

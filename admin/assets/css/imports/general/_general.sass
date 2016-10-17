@@ -1,0 +1,31 @@
+// General Styles
+@import '../plugins/normalize.scss'
+
+* 
+	-webkit-box-sizing: border-box !important
+	-moz-box-sizing: border-box !important
+	box-sizing: border-box !important
+
+body
+	font-size: 16px
+	overflow: hidden
+	font-family: 'Dosis', sans-serif
+	background: #EEE
+	
+// Clearfix
+.cf:after, .cf:before
+	content: ' '
+	display: table
+.cf:after
+	clear: both
+
+	
+// Right Side
+#rightSide
+	width: 85vw
+	min-height: 10px
+	z-index: 1
+	padding-top: 25px
+	overflow-y: scroll
+	height: 92.5vh
+	padding-bottom: 50px
