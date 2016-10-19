@@ -16,6 +16,7 @@
 				</tr>
 			</thead>
 			<tbody>
+				
 			</tbody>
 		</table>
 	</div>
@@ -27,22 +28,78 @@
 		type: 'GET',
 		url: 'http://localhost/rest/api/api.php/posts?transform=1',
 		success: function(items){
-			$.each( items , function(i, item){
-				$('tbody').append(`
-					<tr>
-						<td>`+item.title+`</td>
-						<td>Eslam</td>
-						<td>`+item.id+`</td>
-						<td>Web Design</td>
-						<td><button class="remove"><i class="icon ion-trash-a"></i></button></td>
-						<td><button class="edit"><i class="icon ion-edit"></i></button></td>
-					</tr>
-				`)
+			$.each(items, function(i, item) {
+				$.each(item, function(i, item) {
+					$('tbody').append(`
+						<tr>
+							<td>
+								<span>`+item.title+`</span>
+								<input type="text" id="editTitle" value="`+item.title+`"/>
+							</td>
+							<td>
+								<span>`+item.writer+`</span>
+								<select id="editWriter" data-writer="`+item.writer+`">
+									<option value="Eslam">Eslam</option>
+									<option value="Mohamed">Mohamed</option>
+								</select>
+							</td>
+							<td>`+item.id+`</td>
+							<td>
+								<span>`+item.cateogry_name+`</span>
+								<select id="editCategory" data-category="`+item.cateogry_name+`">
+									<option value="design">Web Design</option>
+									<option value="develop">Web Developemnt</option>
+								</select>
+							</td>
+							<td><button data-id="`+item.id+`" class="remove"><i class="icon ion-trash-a"></i></button></td>
+							<td><button data-id="`+item.id+`" class="edit"><i class="icon ion-edit"></i></button></td>
+						</tr>
+					`)
+				});
 			});
 		},
 		error: function(){
-			alert('Error to make a connection with the database!')
+			console.log('ERROR!!!')
 		}
+	})
+
+
+
+	$('tbody').delegate('.remove', 'click', function(){
+		var this_id 	= $(this).attr('data-id'),
+		    tr 			= $(this).closest('tr');
+		$.ajax({
+		  type: 'DELETE',
+		  url: 'http://localhost/rest/api/api.php/posts/'+this_id,
+		  success: function() {
+		    tr.remove();
+		  },
+		  error: function(){
+		  	console.log('NOT REMOVED!!!!')
+		  }
+		});
+	});
+
+
+
+	$('tbody').delegate('.edit', 'click', function(){
+		var this_id 	= $(this).attr('data-id'),
+		    tr 			= $(this).closest('tr'),
+		    this_writer = tr.find('#editWriter').attr('data-writer'),
+		    this_category = tr.find('#editCategory').attr('data-category');
+
+		tr.find('#editWriter option').each(function(i, option){
+			if( option.getAttribute('value').toUpperCase() == this_writer.toUpperCase()){
+				option.setAttribute('selected', 'true');
+			}
+		});
+		tr.find('#editCategory option').each(function(i1, option){
+			if( option.getAttribute('value').toUpperCase() == this_category.toUpperCase()){
+				option.setAttribute('selected', 'true');
+			}
+		});
+		tr.find('span').hide();
+		tr.find('input, select').show();
 	});
 </script>
 <?php include './assets/footer.php' ?>

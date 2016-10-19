@@ -7,11 +7,11 @@
 		<form action="">
 			<div class="input-warpper">
 				<label>Title</label>
-				<input type="text" placeholder="Title">
+				<input type="text" placeholder="Title" id="contentTitle">
 			</div>
 			<div class="input-warpper">
 				<label>Content</label>
-				<textarea placeholder="Content" rows="5"></textarea>
+				<textarea placeholder="Content" rows="5" id="contentDescription"></textarea>
 			</div>
 			<div class="input-warpper cf">
 				<div class="half">
@@ -29,9 +29,41 @@
 					</select>
 				</div>
 			</div>
-			<button type="submit">Submit!</button>
+			<div id="submitButton">Submit!</div>
 		</form>
 	</div>
 </section>
 
+
+<script src="assets/js/jquery.min.js"></script>
+<script>
+	$('#submitButton').click(function() {
+		var inputTitle = $('#contentTitle').val(),
+			inputDescription = $('#contentDescription').val(),
+			inputWriter = $('#writer').val(),
+			inputCategory = $('#category').val();
+
+		var object = {
+			title: inputTitle,
+			description: inputDescription,
+			writer: inputWriter,
+			cateogry_name: inputCategory,
+			user_id: 1,
+			category_id: 1
+		}
+		console.log(object)
+		$.ajax({
+			type: 'POST',
+			url: 'http://localhost/rest/api/api.php/posts',
+			data: object,
+			success: function(newItem){
+				console.log('DONE!')
+				console.log(newItem)
+			},
+			error: function(){
+				console.log('ERROR!')
+			}
+		})
+	});
+</script>
 <?php include './assets/footer.php' ?>
