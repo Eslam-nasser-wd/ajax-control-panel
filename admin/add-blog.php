@@ -4,7 +4,7 @@
 
 <section id="rightSide">
 	<div class="add-blog cf">
-		<form action="">
+		<form>
 			<div class="input-warpper">
 				<label>Title</label>
 				<input type="text" placeholder="Title" id="contentTitle">
@@ -29,29 +29,39 @@
 					</select>
 				</div>
 			</div>
+			<div class="input-warpper cf">
+				<div class="half">
+					<a class="files-btn">Add Image</a>
+					<input type="file" accept="image/*" id="imagesInput">
+					<div class="image-preview-warpper">
+						<i class="icon ion-close"></i>
+						<img src="" alt="">
+					</div>
+				</div>
+			</div>
 			<div id="submitButton">Submit!</div>
 		</form>
 	</div>
 </section>
 
-
 <script src="assets/js/jquery.min.js"></script>
+<script src="uploader/resize.js"></script>
+<script src="uploader/app.js"></script>
 <script>
 	$('#submitButton').click(function() {
 		var inputTitle = $('#contentTitle').val(),
 			inputDescription = $('#contentDescription').val(),
 			inputWriter = $('#writer').val(),
-			inputCategory = $('#category').val();
+			inputCategory = $('#category').val(),
+			inputImageUrl = self.location.origin + finalUrl;
 
 		var object = {
-			title: inputTitle,
-			description: inputDescription,
+			post_title: inputTitle,
+			post_description: inputDescription,
 			writer: inputWriter,
-			cateogry_name: inputCategory,
-			user_id: 1,
-			category_id: 1
+			category: inputCategory,
+			image_url: inputImageUrl
 		}
-		console.log(object)
 		$.ajax({
 			type: 'POST',
 			url: 'http://localhost/rest/api/api.php/posts',
@@ -63,7 +73,7 @@
 			error: function(){
 				console.log('ERROR!')
 			}
-		})
+		});
 	});
 </script>
 <?php include './assets/footer.php' ?>

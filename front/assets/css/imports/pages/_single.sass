@@ -1,0 +1,51 @@
+// Single page
+#singlePost
+	max-width: 700px
+	background: #FFF
+	padding: 5px
+	margin: 30px auto
+	box-shadow: $shadow_deep
+	.image
+		width: 100%
+		background:
+			position: 100% 100%
+			size: cover
+		display: flex
+		height: 300px
+		position: relative
+		.light-layer
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+			background: rgba(255, 255, 255, .5)
+			z-index: 1
+		h2
+			font-size: 4em
+			margin: auto
+			color: #333
+			text-align: center
+			position: relative
+			z-index: 2
+
+	.date
+		display: block
+		color: #999
+		margin: 10px auto
+		font-size: 15px
+		font-style: italic
+
+.back-btn
+	position: absolute
+	left: 30px
+	bottom: 40px
+	padding: 10px 20px
+	color: #333
+	background: #DDD
+	text-decoration: none
+	box-shadow: $shadow_flat
+	transition: .14s ease-in
+	&:hover
+		box-shadow: $shadow_deep
+

@@ -5,6 +5,8 @@
 	box-shadow: $shadow_flat
 	color: #333
 	padding: 10px 20px
+	position: relative
+	padding-bottom: 150px
 	form
 		.input-warpper
 			font-size: 20px
@@ -29,10 +31,27 @@
 				width: 48%
 				float: left
 				margin-right: 2%
+			#imagesInput
+				display: none !important
+			.files-btn
+				display: block
+				color: #FFF
+				background: #2c3e50
+				margin: 10px auto
+				width: 100%
+				border: 1px solid #2c3e50
+				padding: 3px
+				text-align: center
+				cursor: pointer
+				transition: .13s
+				&:hover
+					background: #34495e
+
 		#submitButton
-			display: block
-			width: 80%
-			margin: 25px auto
+			position: absolute
+			right: 0
+			left: 0
+			bottom: 0
 			color: #FFF
 			border: 0
 			background: #1abc9c
@@ -43,6 +62,18 @@
 				background: #1abc9c / .9
 				cursor: pointer
 			
-
-
+	.image-preview-warpper
+		display: none
+		position: relative
+		.ion-close
+			position: absolute
+			top: 5px
+			right: 5px
+			display: inline-block
+			padding: 2px
+			background: rgba(255, 255, 255, .4)
+			color: #333
+			font-size: 18px
+		img
+			width: 100%		
 

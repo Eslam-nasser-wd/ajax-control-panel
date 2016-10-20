@@ -1,1 +1,68 @@
 // Index
+#hero
+	height: 60vh
+	display: flex
+	background:
+		color: #999
+		position: 100% 100%
+		size: cover
+	h1
+		margin: auto
+		padding: 0
+		color: #FFF
+		font:
+			size: 8em
+
+
+#blogs
+	width: 100%
+	background: #FFF
+	box-shadow: $shadow_deep
+	padding: 15px
+	display: flex
+	flex-wrap: wrap
+	> h1
+		text-align: center
+		text-transform: uppercase
+		position: relative
+		width: 100%
+		margin: auto
+		margin-bottom: 30px
+		&:after, &:before
+			content: ''
+			position: absolute
+			bottom: -7px
+			width: 60px
+			height: 2px
+			background: #777
+			margin: auto
+			display: block
+			left: 0
+			right: 0
+		&:after
+			bottom: -4px
+	a
+		margin: auto
+		margin-top: 10px
+		width: 31.33%
+		border: 1px solid #EEE
+		padding: 3px
+		text-align: center
+		transition: .3s
+		color: inherit
+		text-decoration: none
+		&:hover
+			box-shadow: $shadow_flat_light
+			transform: scale(1.05)
+			.image
+				img
+					transform: scale(1)
+		.image
+			overflow: hidden
+			img
+				width: 100%
+				transition: .3s
+				transform: scale(1.1)	
+
+		.text
+			padding: 3px 10px

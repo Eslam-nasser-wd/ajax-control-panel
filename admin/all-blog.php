@@ -33,8 +33,8 @@
 					$('tbody').append(`
 						<tr>
 							<td>
-								<span>`+item.title+`</span>
-								<input type="text" id="editTitle" value="`+item.title+`"/>
+								<span>`+item.post_title+`</span>
+								<input type="text" id="editTitle" value="`+item.post_title+`"/>
 							</td>
 							<td>
 								<span>`+item.writer+`</span>
@@ -45,8 +45,8 @@
 							</td>
 							<td>`+item.id+`</td>
 							<td>
-								<span>`+item.cateogry_name+`</span>
-								<select id="editCategory" data-category="`+item.cateogry_name+`">
+								<span>`+item.category+`</span>
+								<select id="editCategory" data-category="`+item.category+`">
 									<option value="design">Web Design</option>
 									<option value="develop">Web Developemnt</option>
 								</select>
