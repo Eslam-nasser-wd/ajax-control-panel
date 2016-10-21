@@ -14,5 +14,6 @@
 				</a>
 			</ul>
 		</li></a>
+		<a href="account.php"><li>Account</li></a>
 	</ul>
 </aside>

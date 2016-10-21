@@ -4,6 +4,9 @@
 
 <section id="rightSide">
 	<div class="add-blog cf">
+		<div class="white-layer">
+			<span class="spinner"></span>
+		</div>
 		<form>
 			<div class="input-warpper">
 				<label>Title</label>
@@ -44,11 +47,26 @@
 	</div>
 </section>
 
+<div id="sent" class="noti">
+	<i class="icon ion-android-done-all"></i>
+	Post Saved
+</div>
+
+<div id="notSent" class="noti">
+	<i class="icon ion-alert-circled"></i>
+	Post NOT Saved
+</div>
+
 <script src="assets/js/jquery.min.js"></script>
 <script src="uploader/resize.js"></script>
 <script src="uploader/app.js"></script>
 <script>
 	$('#submitButton').click(function() {
+
+		$('.white-layer').fadeIn('fast').css({
+			display: 'flex'
+		});
+
 		var inputTitle = $('#contentTitle').val(),
 			inputDescription = $('#contentDescription').val(),
 			inputWriter = $('#writer').val(),
@@ -64,14 +82,26 @@
 		}
 		$.ajax({
 			type: 'POST',
-			url: 'http://localhost/rest/api/api.php/posts',
+			url: 'http://localhost/rest/api/api.php/posts1111111',
 			data: object,
 			success: function(newItem){
 				console.log('DONE!')
 				console.log(newItem)
+				$('.white-layer').delay(1000).fadeOut('fast', function(){
+					$('#sent').addClass('show');
+					setTimeout(function(){
+						$('#sent').removeClass('show');	
+					}, 2000);
+				});
 			},
 			error: function(){
-				console.log('ERROR!')
+				console.log('ERROR!');
+				$('.white-layer').delay(1000).fadeOut('fast', function(){
+					$('#notSent').addClass('show');
+					setTimeout(function(){
+						$('#notSent').removeClass('show');	
+					}, 2000);
+				});
 			}
 		});
 	});
