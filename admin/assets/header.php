@@ -16,3 +16,5 @@
 	<!-- Navigation bar -->
 	<?php include 'parts/navbar.php' ?>
 </header>
+
+<?php require_once('authenticate.php'); ?>

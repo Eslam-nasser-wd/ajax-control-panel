@@ -16,4 +16,5 @@
 		</li></a>
 		<a href="account.php"><li>Account</li></a>
 	</ul>
+	<a href="logout.php" class="logout">Logout <i class="icon ion-log-out"></i></a>
 </aside>

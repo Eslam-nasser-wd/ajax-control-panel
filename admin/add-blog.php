@@ -66,13 +66,11 @@
 		$('.white-layer').fadeIn('fast').css({
 			display: 'flex'
 		});
-
 		var inputTitle = $('#contentTitle').val(),
 			inputDescription = $('#contentDescription').val(),
 			inputWriter = $('#writer').val(),
 			inputCategory = $('#category').val(),
 			inputImageUrl = self.location.origin + finalUrl;
-
 		var object = {
 			post_title: inputTitle,
 			post_description: inputDescription,
@@ -82,7 +80,7 @@
 		}
 		$.ajax({
 			type: 'POST',
-			url: 'http://localhost/rest/api/api.php/posts1111111',
+			url: 'api/api.php/posts',
 			data: object,
 			success: function(newItem){
 				console.log('DONE!')
