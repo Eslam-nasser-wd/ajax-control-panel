@@ -18,8 +18,6 @@
 		type: 'GET',
 		url: 'http://localhost/rest/api/api.php/posts?filter=id,eq,'+id,
 		success: function(item){
-			console.log(item.posts.records[0][0])
-			console.log(item)
 			$('#singlePost').append(`
 					<div class="image" style="background-image: url(`+item.posts.records[0][5]+`);">
 						<h2>`+item.posts.records[0][1]+`</h2>

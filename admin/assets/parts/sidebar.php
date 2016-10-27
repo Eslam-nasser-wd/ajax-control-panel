@@ -15,6 +15,7 @@
 			</ul>
 		</li></a>
 		<a href="account.php"><li>Account</li></a>
+		<a href="general.php"><li>General</li></a>
 	</ul>
 	<a href="logout.php" class="logout">Logout <i class="icon ion-log-out"></i></a>
 </aside>

@@ -13,5 +13,5 @@
 <body>
 <header>
 	<!-- Navigation bar -->
-	<?php // include 'parts/navbar.php' ?>
+	<?php include 'parts/navbar.php' ?>
 </header>

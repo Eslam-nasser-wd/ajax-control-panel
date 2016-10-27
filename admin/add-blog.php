@@ -34,6 +34,9 @@
 			</div>
 			<div class="input-warpper cf">
 				<div class="half">
+					<input type="date" id="showDate">
+				</div>
+				<div class="half">
 					<a class="files-btn">Add Image</a>
 					<input type="file" accept="image/*" id="imagesInput">
 					<div class="image-preview-warpper">
@@ -57,34 +60,43 @@
 	Post NOT Saved
 </div>
 
+
 <script src="assets/js/jquery.min.js"></script>
 <script src="uploader/resize.js"></script>
 <script src="uploader/app.js"></script>
 <script>
-	$('#submitButton').click(function() {
+	$('#submitButton').click(function(){
 
 		$('.white-layer').fadeIn('fast').css({
 			display: 'flex'
 		});
-		var inputTitle = $('#contentTitle').val(),
+		var inputTitle   	 = $('#contentTitle').val(),
 			inputDescription = $('#contentDescription').val(),
-			inputWriter = $('#writer').val(),
-			inputCategory = $('#category').val(),
-			inputImageUrl = self.location.origin + finalUrl;
+			inputWriter      = $('#writer').val(),
+			inputCategory    = $('#category').val(),
+			inputShowDate    = $('#showDate').val(),
+			inputCurrentDate = new Date().getFullYear()+'-'+
+							  (new Date().getMonth()+1) +'-'+
+							   new Date().getDate(),
+			inputImageUrl    = self.location.origin + finalUrl;
+
 		var object = {
 			post_title: inputTitle,
 			post_description: inputDescription,
 			writer: inputWriter,
 			category: inputCategory,
-			image_url: inputImageUrl
+			image_url: inputImageUrl,
+			show_date: inputShowDate,
+			post_date: inputCurrentDate
 		}
+
 		$.ajax({
 			type: 'POST',
-			url: 'api/api.php/posts',
+			url: 'http://localhost/rest/api/api.php/posts',
 			data: object,
 			success: function(newItem){
 				console.log('DONE!')
-				console.log(newItem)
+				console.log(object)
 				$('.white-layer').delay(1000).fadeOut('fast', function(){
 					$('#sent').addClass('show');
 					setTimeout(function(){

@@ -69,14 +69,14 @@
 		var this_id 	= $(this).attr('data-id'),
 		    tr 			= $(this).closest('tr');
 		$.ajax({
-		  type: 'DELETE',
-		  url: 'http://localhost/rest/api/api.php/posts/'+this_id,
-		  success: function() {
-		    tr.remove();
-		  },
-		  error: function(){
-		  	console.log('NOT REMOVED!!!!')
-		  }
+		type: 'DELETE',
+		url: 'http://localhost/rest/api/api.php/posts/'+this_id,
+		success: function() {
+			tr.remove();
+		},
+		error: function(){
+			console.log('NOT REMOVED!!!!')
+		}
 		});
 	});
 
