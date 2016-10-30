@@ -27,8 +27,11 @@
 				<div class="half">
 					<label>Category</label>
 					<select id="category">
-						<option value="design">Web Design</option>
-						<option value="develop">Web Developemnt</option>
+						
+
+						<!-- Dynamic options tags -->
+
+
 					</select>
 				</div>
 			</div>
@@ -65,6 +68,24 @@
 <script src="uploader/resize.js"></script>
 <script src="uploader/app.js"></script>
 <script>
+
+	$.ajax({
+		type: 'GET',
+		url: 'http://localhost/rest/api/api.php/categories?transform=1',
+		success: function(items){
+			$.each(items, function(i, item) {
+				$.each(item, function(i, item) {
+					$('select#category').append(`
+						<option value="`+item.id+`">`+item.name+`</option>
+					`)
+				});
+			});
+		},
+		error: function(){
+			console.log('ERROR!!!')
+		}
+	});
+
 	$('#submitButton').click(function(){
 
 		$('.white-layer').fadeIn('fast').css({
@@ -73,7 +94,7 @@
 		var inputTitle   	 = $('#contentTitle').val(),
 			inputDescription = $('#contentDescription').val(),
 			inputWriter      = $('#writer').val(),
-			inputCategory    = $('#category').val(),
+			inputCategory    = parseInt($('#category').val()),
 			inputShowDate    = $('#showDate').val(),
 			inputCurrentDate = new Date().getFullYear()+'-'+
 							  (new Date().getMonth()+1) +'-'+
@@ -84,7 +105,7 @@
 			post_title: inputTitle,
 			post_description: inputDescription,
 			writer: inputWriter,
-			category: inputCategory,
+			cateogry_id: inputCategory,
 			image_url: inputImageUrl,
 			show_date: inputShowDate,
 			post_date: inputCurrentDate

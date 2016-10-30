@@ -3,18 +3,21 @@
 <?php include './assets/header.php' ?>
 
 	<section id="hero" style="background-color: #AAA; background-position: center; background-size: cover">
-		<h1>Develop</h1>
+		<h1>Design</h1>
 	</section>
 
 	<div class="container">
 		<section id="blogs">
-			<h2>blogs</h2>
+			<h1>blogs</h1>
 		</section>
 	</div>
 
 
 <script src="assets/js/jquery.min.js"></script>
 <script>
+
+	var url = window.location.href,
+		id = url.substring(url.lastIndexOf('?') + 1);
 
 	$.ajax({
 		type: 'GET',
@@ -35,7 +38,7 @@
 			$.each(items, function(i, item) {
 				$.each(item, function(i, item) {
 					if (item.show_date <= item.post_date){
-						if (item.category == 'develop') {
+						if (item.cateogry_id == id) {
 							$('#blogs').append(`
 								<a href="single.php?`+item.id+`">
 									<div class="single-blog">
@@ -53,6 +56,7 @@
 							`)
 						}
 					}
+
 				});
 			});
 		},
