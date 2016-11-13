@@ -12,7 +12,7 @@
 <script src="assets/js/jquery.min.js"></script>
 <script>
 	var url = window.location.href,
-		id = url.substring(url.lastIndexOf('?') + 1);
+			id = url.substring(url.lastIndexOf('?') + 1);
 
 	$.ajax({
 		type: 'GET',
